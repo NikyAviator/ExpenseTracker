@@ -1,34 +1,40 @@
 import React, { useState } from 'react';
 import './ExpenseForm.css';
 const ExpenseForm = () => {
-  // const [enteredTitle, setEnteredTitle] = useState('');
-  // const [enteredAmount, setEnteredAmount] = useState('');
-  // const [enteredDate, setEnteredDate] = useState('');
+  const [enteredTitle, setEnteredTitle] = useState('');
+  const [enteredAmount, setEnteredAmount] = useState('');
+  const [enteredDate, setEnteredDate] = useState('');
   // Är samma sak som:
-  const [unserInput, setUserInput] = useState({
-    enteredTitle: '',
-    enteredAmount: '',
-    enteredDate: '',
-  });
+  // const [unserInput, setUserInput] = useState({
+  //   enteredTitle: '',
+  //   enteredAmount: '',
+  //   enteredDate: '',
+  // });
 
   const titleChangeHandler = (event) => {
-    //setEnteredTitle(event.target.value);
-    setUserInput({
-      ...unserInput,
-      enteredTittle: event.target.value,
-    });
+    setEnteredTitle(event.target.value);
+    // setUserInput({
+    //   ...unserInput,
+    //   enteredTittle: event.target.value,
+    // });
+    // Samma sak, fast cleaned, guarantees the snapshot will be the latest.
+    // setUserInput((prevState) => {
+    //   return { ...prevState, enteredTitle: event.target.value };
+    // });
   };
   const amoutChangeHandler = (event) => {
-    setUserInput({
-      ...unserInput,
-      enteredAmount: event.target.value,
-    });
+    setEnteredAmount(event.target.value);
+    // setUserInput({
+    //   ...unserInput,
+    //   enteredAmount: event.target.value,
+    // });
   };
   const dateChangeHandler = (event) => {
-    setUserInput({
-      ...unserInput,
-      enteredDate: event.target.value,
-    });
+    setEnteredDate(event.target.value);
+    // setUserInput({
+    //   ...unserInput,
+    //   enteredDate: event.target.value,
+    // });
   };
 
   return (

@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 
 import Card from '../UI/Card';
 import ExpensesFilter from './ExpensesFilter';
-import ExpenseItem from './ExpenseItem';
 import './Expenses.css';
+import ExpensesList from './ExpensesList';
 
 export default function Expenses(props) {
   const [filteredYear, setFilteredYear] = useState('2020'); // getter and setter å default
@@ -21,6 +21,7 @@ export default function Expenses(props) {
   // Render One ExpenseItem per element in the array! 1. Single curly bracer. Med map! POG AF
   // We made another array from one array
   // VIKTIGT MED key={expense.id}!
+  // filteredExpenses om den är noll så får vi en text, annars själva listan av expenses
   return (
     <div>
       <Card className='expenses'>
@@ -28,14 +29,7 @@ export default function Expenses(props) {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
-        {filteredExpenses.map((expense) => (
-          <ExpenseItem
-            key={expense.id}
-            title={expense.title}
-            amount={expense.amount}
-            date={expense.date}
-          />
-        ))}
+        <ExpensesList items={filteredExpenses} />
       </Card>
     </div>
   );

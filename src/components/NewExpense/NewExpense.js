@@ -6,7 +6,7 @@ const NewExpense = (props) => {
   const onSaveExpenseDataHandler = (enteredExpenseData) => {
     const expenseData = {
       ...enteredExpenseData,
-      id: Math.random().toString(),
+      id: Math.floor(Math.random() * 100).toString(),
     };
     props.onAddExpense(expenseData); // hämtar från App.js å matar in expenseData
   };

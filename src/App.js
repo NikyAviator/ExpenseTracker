@@ -29,15 +29,23 @@ const DUMMY_EXPENSES = [
   },
 ];
 function App() {
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+
+  // lägger till nuvarande expense, lägger till den i array å sprider ut dem nuvarande expenses som är i arrayn
+  // populate the existing array, ...expenses, to add expese to the array!
   const addExpenseHandler = (expense) => {
-    console.log('In App.js');
-    console.log(DUMMY_EXPENSES);
+    // Ett sätt:
+    //setExpenses([expense, ...expenses]);
+    // Ett annat sätt:
+    setExpenses((prevExpenses) => {
+      return [expense, ...prevExpenses];
+    });
   };
 
   return (
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses items={DUMMY_EXPENSES} />
+      <Expenses items={expenses} />
     </div>
   );
 }

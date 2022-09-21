@@ -6,7 +6,7 @@ const ExpensesFilter = (props) => {
   const dropdownChangeHandler = (event) => {
     props.onChangeFilter(event.target.value); // detta e ju props Expenses.js på min egna props namn till komponenten
   };
-
+  // A controlled component, logic resides in parent component
   return (
     <div className='expenses-filter'>
       <div className='expenses-filter__control'>

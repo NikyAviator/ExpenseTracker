@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import './ExpenseForm.css';
-const ExpenseForm = () => {
-  const [enteredTitle, setEnteredTitle] = useState('');
+const ExpenseForm = (props) => {
+  const [enteredTitle, setEnteredTitle] = useState(''); // getters and setters
   const [enteredAmount, setEnteredAmount] = useState('');
   const [enteredDate, setEnteredDate] = useState('');
 
   const titleChangeHandler = (event) => {
-    setEnteredTitle(event.target.value);
+    setEnteredTitle(event.target.value); // the objects value
   };
   const amoutChangeHandler = (event) => {
     setEnteredAmount(event.target.value);
@@ -15,14 +15,15 @@ const ExpenseForm = () => {
     setEnteredDate(event.target.value);
   };
   const submitHandler = (event) => {
-    event.preventDefault();
+    event.preventDefault(); // så den inte glitchar typ
     const expenseData = {
       title: enteredTitle,
       amount: enteredAmount,
       date: new Date(enteredDate),
     };
-    console.log(expenseData);
-    setEnteredTitle('');
+    props.onSaveExpenseData(expenseData);
+    console.log(); // logs our data
+    setEnteredTitle(''); // these three clean the form
     setEnteredAmount('');
     setEnteredDate('');
   };

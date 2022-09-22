@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 
 import Card from '../UI/Card';
 import ExpensesFilter from './ExpensesFilter';
-import './Expenses.css';
 import ExpensesList from './ExpensesList';
+import ExpensesChart from './ExpensesChart';
+import './Expenses.css';
 
-export default function Expenses(props) {
-  const [filteredYear, setFilteredYear] = useState('2020'); // getter and setter å default
+const Expenses = (props) => {
+  const [filteredYear, setFilteredYear] = useState('2022'); // getter and setter å default
 
   const filterChangeHandler = (selectedYear) => {
     setFilteredYear(selectedYear);
@@ -17,7 +18,6 @@ export default function Expenses(props) {
   const filteredExpenses = props.items.filter((expense) => {
     return expense.date.getFullYear().toString() === filteredYear;
   });
-
   // Render One ExpenseItem per element in the array! 1. Single curly bracer. Med map! POG AF
   // We made another array from one array
   // VIKTIGT MED key={expense.id}!
@@ -29,8 +29,11 @@ export default function Expenses(props) {
           selected={filteredYear}
           onChangeFilter={filterChangeHandler}
         />
+        <ExpensesChart expenses={filteredExpenses} />
         <ExpensesList items={filteredExpenses} />
       </Card>
     </div>
   );
-}
+};
+
+export default Expenses;

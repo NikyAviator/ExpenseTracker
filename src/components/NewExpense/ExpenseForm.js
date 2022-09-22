@@ -18,7 +18,7 @@ const ExpenseForm = (props) => {
     event.preventDefault(); // så den inte glitchar typ
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
     props.onSaveExpenseData(expenseData);
